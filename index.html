@@ -8,24 +8,27 @@
     <link rel="stylesheet" href="index.css">
 </head>
 <body>
-    <div>
-        <h1 class="title">TO DO LIST</h1>
-        
-        
-        <div class="div">
-            <div class="add-to-do">
-                <input id="to-do" name="to-do" type="text" required placeholder="Add to-do">
-                <button onclick="addItem()" class="add-button">Add</button>
-                <button onclick="reset()" class="add-button">Reset</button>
-                
+    <div class="container">
+        <section class="div1">
+            <h1 class="title">TO DO LIST</h1>
+            <div >
+                <div class="add-to-do">
+                    <input id="to-do" name="to-do" type="text" required placeholder="Add to-do">
+                    <button onclick="addItem()" class="add-button">Add</button>
+                    <button onclick="reset()" class="add-button">Reset</button>
+                    
+                </div>
+                <p id="error1"></p>
+                <div>
+                    <ul id="list">
+                    </ul>        
+                    
+                </div>
             </div>
-            <p id="error1"></p>
-            <div>
-                <ul id="list">
-                </ul>        
-                
-            </div>
-        </div>
+        </section>
+        <section class="div2">
+            <h1 class="title">NOTES</h1>
+        </section>
     </div>
     <script src="index.js"></script>
 </body>

@@ -4,16 +4,17 @@ const error = document.querySelector("#error1");
 let toDoArray = [];
 
 
+
 function addItem(){
+    const p = document.createElement('p');
+    p.className = 'paragraph'
     const li = document.createElement("li");
     const inputValue = toDoItem.value;
     const t = document.createTextNode(inputValue);
-    
-    // 
-    // 
-    li.appendChild(t);
+    p.appendChild(t);
+    li.appendChild(p)
+    li.appendChild(addDoneBtn());
     li.appendChild(addDeleteBtn());
-    li.appendChild(addDoneBtn())
     toDoArray.push(inputValue);
     if (inputValue === ""){
         error.textContent = "Please write something";
@@ -47,7 +48,6 @@ function addDoneBtn(){
 };
 
 function reset(){
-    toDoArray = [];
     toDoItem.value = "";
     list.innerHTML = '';
 };
