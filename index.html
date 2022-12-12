@@ -4,33 +4,27 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Interests calculator</title>
+    <title>To do list</title>
     <link rel="stylesheet" href="index.css">
 </head>
 <body>
     <div>
-        <h1 class="title">Interest rate calculator</h1>
+        <h1 class="title">TO DO LIST</h1>
         
-        <form>   
-            <div class="div">
-                <label for="price">Price:</label>
-                <input id="price" name="price" type="text" required>
-                <p id="error1"></p>
+        
+        <div class="div">
+            <div class="add-to-do">
+                <input id="to-do" name="to-do" type="text" required placeholder="Add to-do">
+                <button onclick="addItem()" class="add-button">Add</button>
+                <button onclick="reset()" class="add-button">Reset</button>
+                
             </div>
-            <div class="div">
-                <label for="interest">Interest rate (%): </label>
-                <input id="interest" name="interest" type="text" required>
-                <p id="error2"></p>
+            <p id="error1"></p>
+            <div>
+                <ul id="list">
+                </ul>        
+                
             </div>
-            <div class="div">
-                <p id="total">Total with interests: </p>
-                <p id="iva-el"></p>
-            </div>
-        </form>
-        <div class="button">       
-            <button onclick="cond()">Calculate</button>
-            <button onclick="newEntry()">New entry</button>
-            <button onclick="calcIva()" id="iva-button">Calculate IVA</button>
         </div>
     </div>
     <script src="index.js"></script>
