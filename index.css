@@ -12,32 +12,21 @@ body{
     padding: 0;
     overflow-x: hidden;
     text-align: center;
-    background-color: rgb(70, 130, 70);
+    background-color: #d6ccc2;
     color: rgb(16, 14, 14);
     font-family: Georgia, 'Times New Roman', Times, serif;
 }
 
 
-
-
-
-.button{
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    margin-top: 20px;
-}
-
-.add-button{
+.btn{
     width: 70px;
-    margin: 10px;
+    margin-left: 10px;
     padding: 5px;
-    border: none;
-    background-color: rgb(71, 67, 67);
-    color: rgb(226, 221, 221);
+    border: 2px solid #22223b;
+    background-color: #9a8c98;
+    color: #ffffff;
     font-weight: bold;
-    font-size: 1.6em;
+    font-size: 1.5em;
     cursor: pointer;
     transition: 1s;
     border-top-left-radius: 15px;
@@ -47,33 +36,62 @@ body{
 }
 
 
-#to-do{
+#to-do, #note-title{
     height: 40px;
     width: 50%;
 }
+
 
 h1{
     border: .5px solid black;
     width: 50%;
     margin-inline: 25%;
     padding: 5px;
+    color: #22223b;
+    font-size: 1.7em;
 }
 
 .div1, .div2{
     margin-top: 15px;
+    margin-bottom: 15px;
     justify-content: center;
     background-color: rgb(248, 248, 250);
-    width: 50%;
+    width: 100%;
     border-top-left-radius: 15px;
     border-bottom-left-radius: 15px;
     border-top-right-radius: 15px;
     border-bottom-right-radius: 15px;
     padding: 20px;
     height: fit-content;
+    border: 2px solid #22223b;
+    overflow: hidden;
 }
 
+h2{
+    text-decoration: underline;
+    font-size: 1.6em;
 
-#error1, #error2{
+}
+
+textarea{
+    resize: none;
+    width: 80%;
+    height: 60px;
+    font-family: Georgia, 'Times New Roman', Times, serif;
+}
+
+.notes-panel{
+    position: relative;
+}
+
+.add-note{
+    align-items: center;
+    display: flex;
+    justify-content: center;
+    margin-top: 20px;
+}
+
+#error1, #title-error, #note-error, #error-name{
     color: rgb(122, 44, 44);
     font-weight: bold;
     font-size: 1.3em;
@@ -88,8 +106,24 @@ h1{
 }
 
 .container{
-    width: 90%;
+    max-width: 90%;
     margin-inline: 5%;
+}
+
+.name-input{
+    font-size: 1.5em;
+}
+
+.greeting{
+    font-size: 1.7em;
+    padding: 10px;
+    border: 2px solid #22223b;
+    border-top-left-radius: 15px;
+    border-bottom-left-radius: 15px;
+    border-top-right-radius: 15px;
+    border-bottom-right-radius: 15px;
+    width: fit-content;
+    margin-inline: auto;
 }
 
 #list li{
@@ -102,8 +136,7 @@ h1{
     border-top-right-radius: 15px;
     border-bottom-right-radius: 15px;
     position: relative;
-    width: 80%;
-    margin-inline: 10%;
+    width: 100%;
 }
 
 .button{
@@ -111,7 +144,7 @@ h1{
 }
 
 .done{
-    background-color: green;
+    background-color: #606c38;
     color: white;
     cursor: pointer;
     position: absolute;
@@ -131,7 +164,7 @@ h1{
 }
 
 .delete{
-    background-color: rgb(127, 31, 31);
+    background-color: #9b2226;
     color: white;
     cursor: pointer;
     width: 10%;
@@ -145,8 +178,38 @@ h1{
     bottom: 0;
 }
 
-.paragraph{
-    width: 75%
+.delete-note{
+    background-color: #9b2226;
+    color: white;
+    cursor: pointer;
+    width: 15%;
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    border-bottom-right-radius: 15px;
+}
+
+.div-note{
+    border: 1px solid black;
+    border-top-left-radius: 15px;
+    border-bottom-left-radius: 15px;
+    border-top-right-radius: 15px;
+    border-bottom-right-radius: 15px;
+    padding: 15px;
+    position: relative;
+    text-align: left;
+    word-wrap: break-word;
+    margin-bottom: 20px;
+}
+
+.todo-paragraph{
+    font-size: 1em;
+    width: 75%;
+}
+
+.note-paragraph{
+    width: 85%;
+    font-size: 1.4em;
 }
 
 
@@ -163,6 +226,4 @@ h1{
 
 
 
-.div1, .div2{
-    width: 100%;
-}
+

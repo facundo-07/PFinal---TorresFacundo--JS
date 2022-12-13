@@ -8,14 +8,28 @@
     <link rel="stylesheet" href="index.css">
 </head>
 <body>
+    <div class="container div1 welcome">
+        <form>
+            <label for="" class="name-input">Name: </label>
+            <input type="text" name="name" id="name" required>
+            <label for="" class="name-input">Surname: </label>
+            <input type="text" name="surname" id="surname" required>
+        </form>
+        <button onclick="submit()" class="add-button btn">Submit</button>
+        <button onclick="reset()" class="add-button btn">Reset</button>
+    </div>
+    <p id="error-name"></p>
+    <div class="welcome-message">
+
+    </div>
     <div class="container">
         <section class="div1">
             <h1 class="title">TO DO LIST</h1>
             <div >
                 <div class="add-to-do">
                     <input id="to-do" name="to-do" type="text" required placeholder="Add to-do">
-                    <button onclick="addItem()" class="add-button">Add</button>
-                    <button onclick="reset()" class="add-button">Reset</button>
+                    <button onclick="addItem()" class="add-button btn">Add</button>
+                    
                     
                 </div>
                 <p id="error1"></p>
@@ -28,8 +42,18 @@
         </section>
         <section class="div2">
             <h1 class="title">NOTES</h1>
+            <input id="note-title" name="note-title" type="text" required placeholder="Title">
+            <p id="title-error"></p>
+            <div class="add-note">
+                <textarea id="note" type="text" required placeholder="Add note.."></textarea>
+                <button onclick="addNote()" class="add-note btn">Add</button>
+            </div>
+            <p id="note-error"></p>
+            <div class="notes-panel"></div>
         </section>
     </div>
     <script src="index.js"></script>
 </body>
 </html>
+
+
