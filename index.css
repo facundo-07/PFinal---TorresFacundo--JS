@@ -19,9 +19,9 @@ body{
 
 
 .btn{
-    width: 70px;
+    width: fit-content;
     margin-left: 10px;
-    padding: 5px;
+    padding: 6px;
     border: 2px solid #22223b;
     background-color: #9a8c98;
     color: #ffffff;
@@ -34,6 +34,10 @@ body{
     border-top-right-radius: 15px;
     border-bottom-right-radius: 15px;
 }
+
+
+
+
 
 
 #to-do, #note-title{
@@ -52,7 +56,7 @@ h1{
 }
 
 .div1, .div2{
-    margin-top: 15px;
+    margin-top: 150px;
     margin-bottom: 15px;
     justify-content: center;
     background-color: rgb(248, 248, 250);
@@ -212,15 +216,40 @@ textarea{
     font-size: 1.4em;
 }
 
+#surname{
+    margin-block: 10px;
+}
+
+.date{
+    font-size: 1.4em;
+    font-family: 'Courier New', Courier, monospace;
+}
+
+.menu{
+    display: flex;
+    justify-content: center;
+}
+
+.calendar ul{
+    display: flex;
+    list-style: none;
+    width: 100%;
+    padding: 0px;
+    font-size: 1.3em;
+}
+
+.calendar ul li{
+    width: calc(100% / 7);
+}
 
 
 @media (min-width: 1024px){
     .container{
         display: flex;
         flex-direction: row;
-        width: 90%;
+        width: 70%;
         gap: 10px;
-        margin-inline: 5%;
+        margin-inline: 15%;
     }
 }
 
