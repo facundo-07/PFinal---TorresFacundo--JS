@@ -1,51 +1,12 @@
 const submitBtn = document.querySelector('.submit-btn');
 const resetBtn = document.querySelector('.reset-btn');
-const list = document.querySelector("#list");
-const toDoItem = document.querySelector("#to-do");
-const addListBtn = document.querySelector(".add-button");
-const addNoteBtn = document.querySelector(".add-note-btn");
-const error = document.querySelector("#error1");
-const notesPanel = document.querySelector(".notes-panel");
-const newNote = document.querySelector("#note");
-const noteTitle = document.querySelector("#note-title");
-const titleError = document.querySelector("#title-error");
-const noteError = document.querySelector("#note-error");
 let welcomeMessage = document.querySelector(".welcome-message");
 const errorName = document.querySelector("#error-name");
-const today = new Date();
-const day = today.getDay();
-const weekdays = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"];
-const months = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
-let month = today.getMonth();
-let year = today.getFullYear();
 let person = {firstName: "", lastName: ""};
-
 const newBtn = document.querySelectorAll(".new-btn");
 newBtn.forEach(newBtn => newBtn.style.display = 'none');
-
 const nameInput = document.querySelector("#name");
 const surnameInput = document.querySelector("#surname");
-
-function abr(){
-    if (day === 1 || day === 21 || day === 31){
-        return "st"
-    } else if(day === 2 || day === 22){
-        return "nd"
-    } else if(day === 3 || day === 23){
-        return "rd"
-    } else{
-        return "th"
-    };
-}
-
-function returnDate(){   
-    const yearStrgn = new String(weekdays[day] + " - " + months[month] + " "  +  day + abr() + ", " + year);
-    const addDate = document.createTextNode(yearStrgn);
-    const h3 = document.createElement("h3");
-    h3.className = "date";
-    h3.appendChild(addDate);
-    return h3
-}    
 
 submitBtn?.addEventListener('click', (e)=>{
     e.preventDefault();
@@ -70,96 +31,7 @@ submitBtn?.addEventListener('click', (e)=>{
     };   
 });
 
-addListBtn?.addEventListener('click', ()=>{
-    const p = document.createElement('p');
-    p.className = 'todo-paragraph'
-    const li = document.createElement("li");
-    const inputValue = toDoItem.value;
-    const t = document.createTextNode(inputValue);
-    p.setAttribute("contenteditable", "true");
-    p.appendChild(t);
-    li.appendChild(p)
-    li.appendChild(addDoneBtn());
-    li.appendChild(addDeleteBtn());
-    if (inputValue === ""){
-        error.textContent = "Please write something";
-    } else{ 
-        list.appendChild(li);
-        error.textContent = "";
-        toDoItem.value= "";
-    };  
-    p.addEventListener ("click", (e) =>{
-        const line = e.target.parentElement;
-        line.style.textDecoration = "none";
-    });    
-});
-
-function addDeleteBtn(){
-    const deleteBtn = document.createElement("button");
-    deleteBtn.innerText = "X";
-    deleteBtn.className = "delete";
-    deleteBtn.addEventListener('click', (e) => {
-        const item = e.target.parentElement;
-        list.removeChild(item);
-    });
-    return deleteBtn;
-};
-
-function addDoneBtn(){
-    const doneBtn = document.createElement("button");
-    doneBtn.innerText = "✓";
-    doneBtn.className = "done";
-    doneBtn.addEventListener('click', (e) => {
-        const item = e.target.parentElement;
-        item.style.textDecoration = 'line-through';
-    });
-    return doneBtn
-};
-
-addNoteBtn?.addEventListener('click', ()=>{
-    const div = document.createElement("div");
-    div.className = "div-note";
-    const h2 = document.createElement("h2");
-    h2.setAttribute("contenteditable", "true");
-    const p = document.createElement("p");
-    p.className = "note-paragraph";
-    p.setAttribute("contenteditable", "true");
-    const inputValue = newNote.value;
-    const inputTitle = noteTitle.value;
-    const h = document.createTextNode(inputTitle);
-    const t = document.createTextNode(inputValue);
-    div.appendChild(returnDate())
-    h2.appendChild(h);
-    p.appendChild(t);
-    div.appendChild(h2);
-    div.appendChild(p);
-    div.appendChild(deleteNote())
-    if (inputValue === ""){
-        noteError.textContent = "Please write something";
-    } else if (inputTitle === ""){ 
-        titleError.textContent = "Please write something";
-    } else{
-        notesPanel.appendChild(div);
-        titleError.textContent = "";
-        noteError.textContent = "";
-        newNote.value = "";
-        noteTitle.value = "";   
-    };
-});
-
-
-function deleteNote(){
-    const deleteNoteBtn = document.createElement("button");
-    deleteNoteBtn.textContent = "Delete";
-    deleteNoteBtn.className = "delete-note";
-    deleteNoteBtn.addEventListener ("click", (e) => {
-        const item = e.target.parentElement;
-        notesPanel.removeChild(item);
-    })
-    return deleteNoteBtn
-};
-
-resetBtn.addEventListener('click', (e)=>{
+resetBtn?.addEventListener('click', (e)=>{
     e.preventDefault();
     welcomeMessage.innerText = '';
     nameInput.value = '';
@@ -174,26 +46,9 @@ resetBtn.addEventListener('click', (e)=>{
 
 
 
-//  Not in the final  product
 
-function trial(){
-    const p = document.createElement("p");
-    p.className = "date";
-    const d = new Date();
-    const dd = d.getDay();
-    const mm = d.getMonth() + 1;
-    const yy = d.getFullYear();
-    const addto = document.createTextNode(dd + "/" +  mm + "/" + yy);
-    p.appendChild(addto);
-    // console.log(addto)
-    // list.appendChild(p)
-}
-
-trial()
-
-
-
-
+// A PARTIR DE ACA HAY EJEMPLOS QUE FUI HACIENDO PARA PROBAR FUNCIONALIDADES,
+// NO TIENE NADA QUE VER CON EL PROYECTO
 
 
 
