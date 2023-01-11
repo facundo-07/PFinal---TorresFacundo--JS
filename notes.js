@@ -42,7 +42,7 @@ class notesStorage{
     }
 };
 
-let notesArray = []
+let notesArray = [];
 
 addNoteBtn?.addEventListener('click', ()=>{
     const div = document.createElement("div");
@@ -103,36 +103,41 @@ function deleteNote(){
 
 window.addEventListener("load", ()=>{
     const getList = JSON.parse(localStorage.getItem("NOTES"));
-    for (i of getList){
-        const div = document.createElement("div");
-        div.className = "div-note";
-        const h2 = document.createElement("h2");
-        h2.setAttribute("contenteditable", "true");
-        const p = document.createElement("p");
-        p.className = "note-paragraph";
-        p.setAttribute("contenteditable", "true");
-        const inputValue = newNote.value;
-        const inputTitle = noteTitle.value;
-        const h = document.createTextNode(i.title);
-        const t = document.createTextNode(i.note);
-
-        const h3 = document.createElement("h3");
-        h3.className = "date";
-        const date = document.createTextNode(i.date);
-        h3.appendChild(date);
-        
-        div.appendChild(h3)
-        h2.appendChild(h);
-        p.appendChild(t);
-        div.appendChild(h2);
-        div.appendChild(p);
-        div.appendChild(deleteNote());
-        notesPanel.appendChild(div);
-        titleError.textContent = "";
-        noteError.textContent = "";
-        newNote.value = "";
-        noteTitle.value = "";   
-        console.log(i.date)
-    };   
-    notesArray = getList;
+    if (getList != null){
+        for (i of getList){
+            const div = document.createElement("div");
+            div.className = "div-note";
+            const h2 = document.createElement("h2");
+            h2.setAttribute("contenteditable", "true");
+            const p = document.createElement("p");
+            p.className = "note-paragraph";
+            p.setAttribute("contenteditable", "true");
+            const inputValue = newNote.value;
+            const inputTitle = noteTitle.value;
+            const h = document.createTextNode(i.title);
+            const t = document.createTextNode(i.note);
+            const h3 = document.createElement("h3");
+            h3.className = "date";
+            const date = document.createTextNode(i.date);
+            h3.appendChild(date);
+            div.appendChild(h3)
+            h2.appendChild(h);
+            p.appendChild(t);
+            div.appendChild(h2);
+            div.appendChild(p);
+            div.appendChild(deleteNote());
+            notesPanel.appendChild(div);
+            titleError.textContent = "";
+            noteError.textContent = "";
+            newNote.value = "";
+            noteTitle.value = "";   
+            console.log(i.date)
+        };   
+        notesArray = getList;
+    };
 })
+
+
+// window.addEventListener('click', ({x,y,type}) =>{
+//     console.log(x,y,type)
+// })

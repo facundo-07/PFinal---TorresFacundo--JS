@@ -57,25 +57,28 @@ function addDeleteBtn(){
 
 window.addEventListener("load", ()=>{
     const getList = JSON.parse(localStorage.getItem("TO-DO-LIST"));
-    for (i of getList){
-        const p = document.createElement('p');
-        p.className = 'todo-paragraph'
-        const li = document.createElement("li");
-        const t = document.createTextNode(i);
-        p.setAttribute("contenteditable", "true");
-        p.appendChild(t);
-        li.appendChild(p)
-        li.appendChild(addDoneBtn());
-        li.appendChild(addDeleteBtn());
-        list.appendChild(li);
-        error.textContent = "";
-        toDoItem.value= "";  
-        p.addEventListener ("click", (e) =>{
-            const line = e.target.parentElement;
-            line.style.textDecoration = "none";
-        });
-    };
-    toDoArray = getList;
+    if (getList != null){
+        for (i of getList){
+            const p = document.createElement('p');
+            p.className = 'todo-paragraph'
+            const li = document.createElement("li");
+            const t = document.createTextNode(i);
+            p.setAttribute("contenteditable", "true");
+            p.appendChild(t);
+            li.appendChild(p)
+            li.appendChild(addDoneBtn());
+            li.appendChild(addDeleteBtn());
+            list.appendChild(li);
+            error.textContent = "";
+            toDoItem.value= "";  
+            p.addEventListener ("click", (e) =>{
+                const line = e.target.parentElement;
+                line.style.textDecoration = "none";
+            });
+        };
+        toDoArray = getList;
+    }
+    
 });
 
 

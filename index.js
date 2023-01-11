@@ -8,7 +8,18 @@ newBtn.forEach(newBtn => newBtn.style.display = 'none');
 const nameInput = document.querySelector("#name");
 const surnameInput = document.querySelector("#surname");
 
+class User{
+    constructor(firstName, lastName){
+        this.firstName = firstName;
+        this.lastName = lastName;
+    }
+}
+
+
+
 submitBtn?.addEventListener('click', (e)=>{
+    
+
     e.preventDefault();
     person.firstName = nameInput.value;
     person.lastName = surnameInput.value;
@@ -21,6 +32,8 @@ submitBtn?.addEventListener('click', (e)=>{
     if (person.firstName == "" || person.lastName == ""){
         errorName.textContent = "Please enter your name and surname"
     } else{
+        let newUser = new User(nameInput.value, surnameInput.value);
+        localStorage.setItem("USER", JSON.stringify(newUser));
         welcomeMessage.appendChild(p);
         errorName.textContent = "";
         nameInput.value = '';
@@ -31,16 +44,47 @@ submitBtn?.addEventListener('click', (e)=>{
     };   
 });
 
+window.addEventListener('load', ()=>{
+    if (localStorage.getItem("USER") != null){
+        const userLocal = JSON.parse(localStorage.getItem("USER"));
+        person.firstName = userLocal.firstName;
+        person.lastName = userLocal.lastName;
+        let user = `${person.firstName} ${person.lastName}`
+        const p = document.createElement("p");
+        p.className = "greeting";
+        const strgn = `Welcome, ${user}. Remember that you can edit your changes as you wish.`;
+        const strgnToAdd = document.createTextNode(strgn)
+        p.appendChild(strgnToAdd);
+        welcomeMessage.appendChild(p);
+        errorName.textContent = "";
+        nameInput.value = '';
+        surnameInput.value = '';
+        nameInput.setAttribute('disabled', 'true');
+        surnameInput.setAttribute('disabled', 'true');
+        newBtn.forEach(newBtn => newBtn.style.display = 'block');
+    }
+})
+
+
 resetBtn?.addEventListener('click', (e)=>{
     e.preventDefault();
-    welcomeMessage.innerText = '';
-    nameInput.value = '';
-    surnameInput.value = '';
-    nameInput.removeAttribute('disabled');
-    surnameInput.removeAttribute('disabled');
-    newBtn.forEach(newBtn => newBtn.style.display = "none");
-    errorName.textContent = "";
+    if (confirm('Are you sure? Your data will be lost')) {
+        welcomeMessage.innerText = '';
+        nameInput.value = '';
+        surnameInput.value = '';
+        nameInput.removeAttribute('disabled');
+        surnameInput.removeAttribute('disabled');
+        newBtn.forEach(newBtn => newBtn.style.display = "none");
+        errorName.textContent = "";
+        localStorage.removeItem("USER");
+        localStorage.removeItem("NOTES");
+        localStorage.removeItem("TO-DO-LIST");  
+      }     
 });
+
+
+
+
 
 
 
