@@ -251,6 +251,17 @@ textarea{
     width: calc(100% / 7);
 }
 
+.swal-footer{
+    text-align: center !important;
+}
+
+.swal-modal{
+    background-color: #a3b18a;
+}
+
+.swal-icon{
+    display: none;
+}
 
 @media (min-width: 1024px){
     .container{

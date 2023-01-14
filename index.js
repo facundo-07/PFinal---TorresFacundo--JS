@@ -13,13 +13,9 @@ class User{
         this.firstName = firstName;
         this.lastName = lastName;
     }
-}
-
-
+};
 
 submitBtn?.addEventListener('click', (e)=>{
-    
-
     e.preventDefault();
     person.firstName = nameInput.value;
     person.lastName = surnameInput.value;
@@ -62,24 +58,44 @@ window.addEventListener('load', ()=>{
         nameInput.setAttribute('disabled', 'true');
         surnameInput.setAttribute('disabled', 'true');
         newBtn.forEach(newBtn => newBtn.style.display = 'block');
-    }
+    };
 })
 
 
 resetBtn?.addEventListener('click', (e)=>{
     e.preventDefault();
-    if (confirm('Are you sure? Your data will be lost')) {
-        welcomeMessage.innerText = '';
-        nameInput.value = '';
-        surnameInput.value = '';
-        nameInput.removeAttribute('disabled');
-        surnameInput.removeAttribute('disabled');
-        newBtn.forEach(newBtn => newBtn.style.display = "none");
-        errorName.textContent = "";
-        localStorage.removeItem("USER");
-        localStorage.removeItem("NOTES");
-        localStorage.removeItem("TO-DO-LIST");  
-      }     
+    swal({
+        title: 'Are you sure?',
+        text: "Your data will be lost",
+        icon: "warning",
+        buttons: [
+        'No, cancel it!',
+        'Yes, I am sure!'
+        ],
+        dangerMode: true,
+    }).then(function(isConfirm) {
+        if (isConfirm) {
+            swal({
+                title: 'Data deleted',
+                text: 'You may start again',
+                icon: 'success'
+            }).then(function() {
+                welcomeMessage.innerText = '';
+                nameInput.value = '';
+                surnameInput.value = '';
+                nameInput.removeAttribute('disabled');
+                surnameInput.removeAttribute('disabled');
+                newBtn.forEach(newBtn => newBtn.style.display = "none");
+                errorName.textContent = "";
+                localStorage.removeItem("USER");
+                localStorage.removeItem("NOTES");
+                localStorage.removeItem("TO-DO-LIST");
+            });
+        } else {
+            swal("Cancelled", "Your data is safe", "error");
+        }
+    });
+
 });
 
 
