@@ -15,15 +15,23 @@ class User{
     }
 };
 
-submitBtn?.addEventListener('click', (e)=>{
+// setTimeout(() =>{
+//     swal({
+//         title: 'Welcome',
+//         text: "",
+//     })},2000)
+
+
+
+const submitAction = (e) =>{
     e.preventDefault();
     person.firstName = nameInput.value;
     person.lastName = surnameInput.value;
-    let user = `${person.firstName} ${person.lastName}`
+    let user = `${person.firstName} ${person.lastName}`;
     const p = document.createElement("p");
-    p.className = "greeting";
-    const strgn = `Welcome, ${user}. Remember that you can edit your changes as you wish.`;
-    const strgnToAdd = document.createTextNode(strgn)
+    p.classList.add("greeting");
+    const strgn = new String(`Welcome, ${user}. Remember that you can edit your changes as you wish.`);
+    const strgnToAdd = document.createTextNode(strgn);
     p.appendChild(strgnToAdd);
     if (person.firstName == "" || person.lastName == ""){
         errorName.textContent = "Please enter your name and surname"
@@ -38,16 +46,19 @@ submitBtn?.addEventListener('click', (e)=>{
         surnameInput.setAttribute('disabled', 'true');
         newBtn.forEach(newBtn => newBtn.style.display = 'block');
     };   
-});
+};
 
-window.addEventListener('load', ()=>{
+submitBtn.addEventListener('click', submitAction);
+
+
+const windowLoad = () =>{
     if (localStorage.getItem("USER") != null){
         const userLocal = JSON.parse(localStorage.getItem("USER"));
         person.firstName = userLocal.firstName;
         person.lastName = userLocal.lastName;
         let user = `${person.firstName} ${person.lastName}`
         const p = document.createElement("p");
-        p.className = "greeting";
+        p.classList.add("greeting");
         const strgn = `Welcome, ${user}. Remember that you can edit your changes as you wish.`;
         const strgnToAdd = document.createTextNode(strgn)
         p.appendChild(strgnToAdd);
@@ -59,27 +70,28 @@ window.addEventListener('load', ()=>{
         surnameInput.setAttribute('disabled', 'true');
         newBtn.forEach(newBtn => newBtn.style.display = 'block');
     };
-})
+}
+
+window.addEventListener('load', windowLoad)
 
 
-resetBtn?.addEventListener('click', (e)=>{
+const resetAction = (e)=>{
     e.preventDefault();
     swal({
         title: 'Are you sure?',
         text: "Your data will be lost",
-        icon: "warning",
         buttons: [
         'No, cancel it!',
         'Yes, I am sure!'
         ],
         dangerMode: true,
-    }).then(function(isConfirm) {
+    }).then((isConfirm) => {
         if (isConfirm) {
             swal({
                 title: 'Data deleted',
                 text: 'You may start again',
                 icon: 'success'
-            }).then(function() {
+            }).then(()=> {
                 welcomeMessage.innerText = '';
                 nameInput.value = '';
                 surnameInput.value = '';
@@ -95,8 +107,26 @@ resetBtn?.addEventListener('click', (e)=>{
             swal("Cancelled", "Your data is safe", "error");
         }
     });
+}
 
+
+resetBtn?.addEventListener('click', resetAction);
+
+$("body").vegas({
+    slides: [
+        {src: '../images/austria2.jpg'},
+        {src: '../images/austria3.jpg'},        
+    ]
 });
+
+
+const trial = fetch('https://restcountries.com/v3.1/region/europe')
+      .then( (response) => {return response.json()})
+      .then( (json) => { 
+        for (i of json){
+            console.log(i.capital);
+        }
+      })
 
 
 

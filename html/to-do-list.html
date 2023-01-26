@@ -5,7 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>To do list</title>
-    <link rel="stylesheet" href="index.css">
+    <link rel="stylesheet" href="../index.css">
 </head>
 <body>
     <div class="name-surname"></div>
@@ -18,6 +18,15 @@
                     <input id="to-do" name="to-do" type="text" required placeholder="Add to-do">
                     <button class="add-button btn">Add</button>
                 </div>
+                <div class="priority-div">
+                    <label for="priority">Priority: </label>
+                    <select name="priority" id="priority">
+                        <option></option>
+                        <option value="high" class="priority-value">High</option>
+                        <option value="medium" class="priority-value">Medium</option>
+                        <option value="low" class="priority-value">Low</option>
+                    </select>
+                </div>
                 <p id="error1"></p>
                 <div>
                     <ul id="list">
@@ -27,7 +36,7 @@
             </div>
         </section>
     </div>
-    <script src="to-do.js"></script>
+    <script src="../js/to-do.js"></script>
     <!-- <script src="index.js"></script> -->
     
 

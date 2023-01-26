@@ -12,8 +12,10 @@ const weekdays = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Frida
 const months = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
 let month = today.getMonth();
 let year = today.getFullYear();
+let notesArray = [];
 
-function abr(){
+
+const abr = ()=>{
     if (dateNumber === 1 || dateNumber === 21 || dateNumber === 31){
         return "st"
     } else if(dateNumber === 2 || dateNumber === 22){
@@ -25,7 +27,8 @@ function abr(){
     };
 };
 
-function returnDate(){   
+
+const returnDate = ()=>{
     const yearStrgn = new String(`${weekdays[day]} - ${months[month]} ${dateNumber}${abr()}, ${year}`);
     const addDate = document.createTextNode(yearStrgn);
     const h3 = document.createElement("h3");
@@ -33,6 +36,7 @@ function returnDate(){
     h3.appendChild(addDate);
     return h3
 };
+
 
 class notesStorage{
     constructor(date, title, note){
@@ -42,9 +46,7 @@ class notesStorage{
     }
 };
 
-let notesArray = [];
-
-addNoteBtn?.addEventListener('click', ()=>{
+const addNote = ()=>{
     const div = document.createElement("div");
     div.className = "div-note";
     const h2 = document.createElement("h2");
@@ -75,11 +77,15 @@ addNoteBtn?.addEventListener('click', ()=>{
         let note = new notesStorage(returnDate().textContent, inputTitle, inputValue);      
         notesArray.push(note)
         localStorage.setItem("NOTES", JSON.stringify(notesArray));
+       
     };
-});
+};
 
 
-function deleteNote(){
+addNoteBtn?.addEventListener('click', addNote);
+
+
+const deleteNote = ()=>{
     const deleteNoteBtn = document.createElement("button");
     deleteNoteBtn.textContent = "Delete";
     deleteNoteBtn.className = "delete-note";
@@ -100,8 +106,7 @@ function deleteNote(){
     return deleteNoteBtn
 };
 
-
-window.addEventListener("load", ()=>{
+const windowNoteLoad = ()=>{
     const getList = JSON.parse(localStorage.getItem("NOTES"));
     if (getList != null){
         for (i of getList){
@@ -135,8 +140,10 @@ window.addEventListener("load", ()=>{
         };   
         notesArray = getList;
     };
-})
+};
 
+
+window.addEventListener("load", windowNoteLoad);
 
 // window.addEventListener('click', ({x,y,type}) =>{
 //     console.log(x,y,type)
