@@ -1,5 +1,5 @@
-let calendarArray = [];
-
+let calendarArray = [1];
+console.log(calendarArray)
 class calendarStorage{
     constructor(id, title, start, end){
         this.id = id;
