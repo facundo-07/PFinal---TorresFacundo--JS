@@ -10,7 +10,6 @@ class calendarStorage{
 };
 
 const calendarLayOut = ()=>{
-    
     const calendarEl = document.querySelector('#calendar');
     const calendar = new FullCalendar.Calendar(calendarEl, {
         initialView: 'dayGridMonth',
@@ -53,12 +52,11 @@ const calendarLayOut = ()=>{
                                     allDay: false,
                                     editable: true,
                                     displayEventTime: true,
-                                });     
-                                deleteBtn();
-                                let calendarArray = [];
+                                });         
                                 let newEvent = new calendarStorage(eventTitle, eventTitle, dateStart, dateFinish);
                                 calendarArray.push(newEvent);
                                 localStorage.setItem("CALENDAR", JSON.stringify(calendarArray));
+                                deleteBtn();
                             };
                         })            
                 }
@@ -82,28 +80,8 @@ const calendarLayOut = ()=>{
         }
         
     };
-
     deleteBtn();
-
     calendarArray = getList;
-    const btn = document.querySelectorAll('.rounded-btn');
-    btn.forEach(btn=>{
-        btn.addEventListener('click',(e)=>{
-            const y = e.target.parentElement;
-            y.remove();
-            const toDelete = y.querySelector(':nth-child(3)').textContent;
-            for (i of getList){
-                if (i.title === toDelete){
-                    const index = getList.indexOf(i);
-                    getList.splice(index, 1);
-                }
-            };
-            localStorage.setItem("CALENDAR", JSON.stringify(getList));
-            calendarArray = getList;
-        });
-    });
-
-    
 };
 
 document.addEventListener('DOMContentLoaded', calendarLayOut);
@@ -111,9 +89,31 @@ document.addEventListener('DOMContentLoaded', calendarLayOut);
 const deleteBtn = ()=>{
     const eventFc = document.querySelectorAll(".fc-event");
     eventFc.forEach(eventFc=>{
-        const btn = document.createElement("button");
-        btn.className = "rounded-btn"
-        btn.innerText = "X";
-        eventFc.appendChild(btn);      
+        if(eventFc.lastChild.className != "rounded-btn"){
+            const btn = document.createElement("button");
+            btn.className = "rounded-btn";
+            btn.innerText = "X";
+            eventFc.appendChild(btn);   
+        };
     });
+
+    const getList = JSON.parse(localStorage.getItem("CALENDAR"));
+    const btn = document.querySelectorAll('.rounded-btn');
+    btn.forEach(btn=>{
+        btn.addEventListener('click',(e)=>{
+            const y = e.target.parentElement;
+            y.remove();
+            const toDelete = y.querySelector(':nth-child(3)').textContent;
+            for (i of getList){
+                console.log(i)
+                if (i.title === toDelete){
+                    const index = getList.indexOf(i);
+                    getList.splice(index, 1);
+                };
+            };
+            localStorage.setItem("CALENDAR", JSON.stringify(getList));
+            calendarArray = getList;
+        });
+    });
+   
 };
