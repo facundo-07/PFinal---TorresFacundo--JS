@@ -110,10 +110,10 @@ const resetAction = (e)=>{
 
 resetBtn?.addEventListener('click', resetAction);
 
-$("body").vegas({
+$(".slide").vegas({
     slides: [
-        {src: '../images/austria2.jpg'},
-        {src: '../images/austria3.jpg'},        
+        {src: '/images/austria2.jpg'},
+        {src: '/images/austria3.jpg'},        
     ]
 });
 
