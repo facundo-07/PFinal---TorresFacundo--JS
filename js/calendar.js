@@ -55,6 +55,8 @@ const calendarLayOut = ()=>{
                                 });     
                                 deleteBtn();
                                 let newEvent = new calendarStorage(eventTitle, eventTitle, dateStart, dateFinish);
+                                console.log(calendarArray);
+                                console.log(newEvent);
                                 calendarArray.push(newEvent);
                                 localStorage.setItem("CALENDAR", JSON.stringify(calendarArray));
                             };
