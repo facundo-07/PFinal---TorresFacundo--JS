@@ -1,4 +1,4 @@
-let calendarArray;
+let calendarArray = [];
 
 class calendarStorage{
     constructor(id, title, start, end){
@@ -10,7 +10,7 @@ class calendarStorage{
 };
 
 const calendarLayOut = ()=>{
-    calendarArray = [];
+    
     const calendarEl = document.querySelector('#calendar');
     const calendar = new FullCalendar.Calendar(calendarEl, {
         initialView: 'dayGridMonth',
@@ -55,9 +55,8 @@ const calendarLayOut = ()=>{
                                     displayEventTime: true,
                                 });     
                                 deleteBtn();
+                                let calendarArray = [];
                                 let newEvent = new calendarStorage(eventTitle, eventTitle, dateStart, dateFinish);
-                                console.log(calendarArray);
-                                console.log(newEvent);
                                 calendarArray.push(newEvent);
                                 localStorage.setItem("CALENDAR", JSON.stringify(calendarArray));
                             };
@@ -87,7 +86,6 @@ const calendarLayOut = ()=>{
     deleteBtn();
 
     calendarArray = getList;
-
     const btn = document.querySelectorAll('.rounded-btn');
     btn.forEach(btn=>{
         btn.addEventListener('click',(e)=>{
@@ -119,6 +117,3 @@ const deleteBtn = ()=>{
         eventFc.appendChild(btn);      
     });
 };
-
-
-console.log(2)
