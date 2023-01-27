@@ -120,3 +120,4 @@ const deleteBtn = ()=>{
 };
 
 
+console.log(calendarArray)
