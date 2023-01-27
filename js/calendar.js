@@ -1,3 +1,6 @@
+let calendarArray = [];
+console.log(calendarArray);
+
 
 class calendarStorage{
     constructor(id, title, start, end){
@@ -9,8 +12,6 @@ class calendarStorage{
 };
 
 const calendarLayOut = ()=>{
-    let calendarArray = [1];
-    console.log(calendarArray)
     const calendarEl = document.querySelector('#calendar');
     const calendar = new FullCalendar.Calendar(calendarEl, {
         initialView: 'dayGridMonth',
