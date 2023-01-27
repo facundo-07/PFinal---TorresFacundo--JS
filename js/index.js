@@ -112,8 +112,8 @@ resetBtn?.addEventListener('click', resetAction);
 
 $(".slide").vegas({
     slides: [
-        {src: '/images/austria2.jpg'},
-        {src: '/images/austria3.jpg'},        
+        {src: 'austria2.jpg'},
+        {src: 'austria3.jpg'},        
     ]
 });
 
