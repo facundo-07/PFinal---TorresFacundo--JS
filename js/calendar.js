@@ -83,7 +83,9 @@ const calendarLayOut = ()=>{
         
     };
     deleteBtn();
-    calendarArray = getList;
+    if (getList != null){
+        calendarArray = getList;
+    };
 };
 
 document.addEventListener('DOMContentLoaded', calendarLayOut);
@@ -114,7 +116,10 @@ const deleteBtn = ()=>{
                 };
             };
             localStorage.setItem("CALENDAR", JSON.stringify(getList));
-            calendarArray = getList;
+
+            if (getList != null){
+                calendarArray = getList;
+            };
         });
     });
    
