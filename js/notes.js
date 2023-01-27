@@ -14,7 +14,6 @@ let month = today.getMonth();
 let year = today.getFullYear();
 let notesArray = [];
 
-
 const abr = ()=>{
     if (dateNumber === 1 || dateNumber === 21 || dateNumber === 31){
         return "st"
@@ -27,7 +26,6 @@ const abr = ()=>{
     };
 };
 
-
 const returnDate = ()=>{
     const yearStrgn = new String(`${weekdays[day]} - ${months[month]} ${dateNumber}${abr()}, ${year}`);
     const addDate = document.createTextNode(yearStrgn);
@@ -36,7 +34,6 @@ const returnDate = ()=>{
     h3.appendChild(addDate);
     return h3
 };
-
 
 class notesStorage{
     constructor(date, title, note){
@@ -81,9 +78,7 @@ const addNote = ()=>{
     };
 };
 
-
 addNoteBtn?.addEventListener('click', addNote);
-
 
 const deleteNote = ()=>{
     const deleteNoteBtn = document.createElement("button");
@@ -142,9 +137,4 @@ const windowNoteLoad = ()=>{
     };
 };
 
-
 window.addEventListener("load", windowNoteLoad);
-
-// window.addEventListener('click', ({x,y,type}) =>{
-//     console.log(x,y,type)
-// })

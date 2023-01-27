@@ -2,12 +2,10 @@ let calendarArray = []
 
 class calendarStorage{
     constructor(id, title, start, end){
-        this.title = id;
+        this.id = id;
         this.title = title;
         this.start = start;
         this.end = end;
-        // this.startTime = startTime;
-        // this.finishTime = finishTime;
     }
 };
 
@@ -55,11 +53,10 @@ const calendarLayOut = ()=>{
                                     editable: true,
                                     displayEventTime: true,
                                 });     
+                                deleteBtn();
                                 let newEvent = new calendarStorage(eventTitle, eventTitle, dateStart, dateFinish);
                                 calendarArray.push(newEvent);
-                                console.log(dateFinish);
                                 localStorage.setItem("CALENDAR", JSON.stringify(calendarArray));
-                                calendarArray = getList;
                             };
                         })            
                 }
@@ -81,11 +78,43 @@ const calendarLayOut = ()=>{
                 displayEventTime: true,
             });     
         }
+        
     };
 
+    deleteBtn();
+
     calendarArray = getList;
+
+    const btn = document.querySelectorAll('.rounded-btn');
+    btn.forEach(btn=>{
+        btn.addEventListener('click',(e)=>{
+            const y = e.target.parentElement;
+            y.remove();
+            const toDelete = y.querySelector(':nth-child(3)').textContent;
+            for (i of getList){
+                if (i.title === toDelete){
+                    const index = getList.indexOf(i);
+                    getList.splice(index, 1);
+                }
+            };
+            localStorage.setItem("CALENDAR", JSON.stringify(getList));
+            calendarArray = getList;
+        });
+    });
+
+    
 };
 
-
 document.addEventListener('DOMContentLoaded', calendarLayOut);
+
+const deleteBtn = ()=>{
+    const eventFc = document.querySelectorAll(".fc-event");
+    eventFc.forEach(eventFc=>{
+        const btn = document.createElement("button");
+        btn.className = "rounded-btn"
+        btn.innerText = "X";
+        eventFc.appendChild(btn);      
+    });
+};
+
 

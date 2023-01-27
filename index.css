@@ -36,6 +36,14 @@ body{
     font-size: .9em;
 }
 
+.rounded-btn{
+    border-top-left-radius: 15px;
+    border-bottom-left-radius: 15px;
+    border-top-right-radius: 15px;
+    border-bottom-right-radius: 15px;
+    background-color: rgba(237, 15, 15, 0.2);
+}
+
 #name, #surname{
     margin-bottom: 10px;
     width: 100%;
@@ -285,6 +293,7 @@ textarea{
 .menu{
     display: flex;
     justify-content: center;
+    margin-top: 30px;
 }
 
 .calendar ul{

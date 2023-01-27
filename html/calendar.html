@@ -9,12 +9,15 @@
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Rounded:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200">
 </head>
 <body>
-    <div class="container-calendar">
-        
-            <div id="calendar">
-                <!-- <button type="button" title="add event..." aria-pressed="false" class="fc-addEventButton-button fc-button fc-button-primary">add event...</button> -->
-            </div>
+    <div class="menu">
+        <button class="btn new-btn" onclick="window.location.href='notes.html'">Notes</button>
+        <button class="btn new-btn" onclick="window.location.href='to-do-list.html'">To do list</button>
+        <button class="btn new-btn" onclick="window.location.href='index.html'">Home</button>
     </div>
+    <div class="container-calendar">
+            <div id="calendar"></div>
+    </div>
+
     <!-- Fullcalendar -->
     <script src='../vendor/fullCalendar/index.global.min.js'></script>
 
