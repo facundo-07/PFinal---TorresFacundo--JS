@@ -15,14 +15,6 @@ class User{
     }
 };
 
-// setTimeout(() =>{
-//     swal({
-//         title: 'Welcome',
-//         text: "",
-//     })},2000)
-
-
-
 const submitAction = (e) =>{
     e.preventDefault();
     person.firstName = nameInput.value;
@@ -110,17 +102,15 @@ const resetAction = (e)=>{
 
 resetBtn?.addEventListener('click', resetAction);
 
-$(".slide").vegas({
-    slides: [
-        {src: 'austria2.jpg'},
-        {src: 'austria3.jpg'},        
-    ]
-});
+// the cat API
 
-// const trial = fetch('https://restcountries.com/v3.1/region/europe')
-//       .then( (response) => {return response.json()})
-//       .then( (json) => { 
-//         for (i of json){
-//             console.log(i.capital);
-//         }
-//       });
+const u = document.querySelector(".slide");
+
+fetch("https://api.thecatapi.com/v1/images/search?breed_ids=beng")
+   .then(resp => { return resp.json()})
+   .then(data => {
+    for (i of data){
+        console.log(i.url)
+        u.style.backgroundImage = `url(${i.url})`;
+    };
+   })
